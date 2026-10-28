@@ -1,0 +1,76 @@
+{
+  "assembly_id": "AERO-GP-440",
+  "name": "High-Pressure Hydraulic Gear Pump Subassembly",
+  "units": "millimeters",
+  "tolerance_linear": 4.0,
+  "tolerance_angular_deg": 12.0,
+  "parts": [
+    {
+      "id": "part_1",
+      "name": "Base Pump Housing",
+      "type": "housing",
+      "ground": true,
+      "color": "#4a5568",
+      "target_pose": { "position": [0.0, 0.0, 0.0], "orientation": [0.0, 0.0, 0.0, 1.0] },
+      "precedence": [],
+      "mating_vector": [0.0, 0.0, 0.0],
+      "bounding_box": { "width": 100.0, "height": 100.0, "depth": 80.0 }
+    },
+    {
+      "id": "part_2",
+      "name": "Drive Shaft & Spur Gear",
+      "type": "shaft",
+      "ground": false,
+      "color": "#cbd5e0",
+      "target_pose": { "position": [0.0, 0.0, 15.0], "orientation": [0.0, 0.0, 0.0, 1.0] },
+      "precedence": ["part_1"],
+      "mating_vector": [0.0, 0.0, -1.0],
+      "bounding_box": { "width": 36.0, "height": 36.0, "depth": 110.0 }
+    },
+    {
+      "id": "part_3",
+      "name": "Primary Roller Bearing",
+      "type": "bearing",
+      "ground": false,
+      "color": "#94a3b8",
+      "target_pose": { "position": [0.0, 0.0, 42.0], "orientation": [0.0, 0.0, 0.0, 1.0] },
+      "precedence": ["part_2"],
+      "mating_vector": [0.0, 0.0, -1.0],
+      "bounding_box": { "width": 45.0, "height": 45.0, "depth": 16.0 }
+    },
+    {
+      "id": "part_4",
+      "name": "Viton Internal O-Ring Seal",
+      "type": "seal",
+      "ground": false,
+      "color": "#f97316",
+      "critical_escape": true,
+      "target_pose": { "position": [0.0, 0.0, 52.0], "orientation": [0.0, 0.0, 0.0, 1.0] },
+      "precedence": ["part_3"],
+      "mating_vector": [0.0, 0.0, -1.0],
+      "bounding_box": { "width": 64.0, "height": 64.0, "depth": 4.0 }
+    },
+    {
+      "id": "part_5",
+      "name": "Front Faceplate Enclosure",
+      "type": "plate",
+      "ground": false,
+      "color": "#38bdf8",
+      "target_pose": { "position": [0.0, 0.0, 60.0], "orientation": [0.0, 0.0, 0.0, 1.0] },
+      "precedence": ["part_4"],
+      "mating_vector": [0.0, 0.0, -1.0],
+      "bounding_box": { "width": 96.0, "height": 96.0, "depth": 14.0 }
+    },
+    {
+      "id": "part_6",
+      "name": "M6 Perimeter Hex Bolt Array",
+      "type": "fastener",
+      "ground": false,
+      "color": "#e2e8f0",
+      "target_pose": { "position": [0.0, 0.0, 72.0], "orientation": [0.0, 0.0, 0.0, 1.0] },
+      "precedence": ["part_5"],
+      "mating_vector": [0.0, 0.0, -1.0],
+      "bounding_box": { "width": 80.0, "height": 80.0, "depth": 24.0 }
+    }
+  ]
+}

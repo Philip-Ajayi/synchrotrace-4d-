@@ -1,0 +1,342 @@
+:root {
+  --bg-primary: #090d16;
+  --bg-secondary: #111827;
+  --bg-card: #162032;
+  --border-color: #24344d;
+  --border-focus: #3b82f6;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent-blue: #0284c7;
+  --accent-cyan: #06b6d4;
+  --status-green: #10b981;
+  --status-yellow: #f59e0b;
+  --status-red: #ef4444;
+  --status-red-glow: rgba(239, 68, 68, 0.4);
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  height: 56px;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 50;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-badge {
+  background: linear-gradient(135deg, #0284c7, #38bdf8);
+  color: white;
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.header-status {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--status-green);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--status-green);
+  box-shadow: 0 0 8px var(--status-green);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Control Bar */
+.control-bar {
+  background: var(--bg-card);
+  padding: 8px 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background: #1e293b;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn:hover {
+  background: #334155;
+  border-color: var(--border-focus);
+}
+
+.btn-primary {
+  background: #0369a1;
+  border-color: #0284c7;
+}
+
+.btn-primary:hover {
+  background: #0284c7;
+}
+
+.btn-danger {
+  background: #991b1b;
+  border-color: #ef4444;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+}
+
+/* Main Grid Layout */
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 380px;
+  grid-template-rows: 1fr 240px;
+  gap: 8px;
+  padding: 8px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.panel-header {
+  height: 36px;
+  background: rgba(17, 24, 39, 0.85);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.panel-content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Viewport 1: Monocular Video / Synthetic Station Feed */
+#video-panel {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+#station-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #020617;
+}
+
+/* Viewport 2: 3D CAD Twin */
+#cad-panel {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+#cad-canvas-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Viewport 3: Topological DAG Explorer */
+#dag-panel {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+}
+
+#dag-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Viewport 4: Telemetry & Station Interlock HUD */
+#hud-panel {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HUD Widgets */
+.telemetry-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.interlock-banner {
+  padding: 14px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 2px solid var(--status-red);
+  border-radius: 6px;
+  display: none;
+  animation: alarmFlash 0.8s infinite alternate;
+}
+
+.interlock-banner.active {
+  display: block;
+}
+
+@keyframes alarmFlash {
+  0% { box-shadow: 0 0 10px var(--status-red-glow); background: rgba(239, 68, 68, 0.15); }
+  100% { box-shadow: 0 0 25px rgba(239, 68, 68, 0.8); background: rgba(239, 68, 68, 0.35); }
+}
+
+.interlock-title {
+  color: var(--status-red);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.interlock-desc {
+  font-size: 0.78rem;
+  margin-top: 6px;
+  line-height: 1.4;
+  color: #fca5a5;
+  font-family: var(--font-mono);
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.stat-box {
+  background: var(--bg-card);
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+}
+
+.log-container {
+  flex: 1;
+  background: #020617;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  overflow-y: auto;
+  min-height: 180px;
+  max-height: 260px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.log-entry {
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.log-nominal { color: #38bdf8; }
+.log-success { color: var(--status-green); }
+.log-violation { color: var(--status-red); font-weight: 700; }
+
+/* In-canvas HUD overlay */
+.canvas-hud-overlay {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(4px);
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #38bdf8;
+  border: 1px solid var(--border-color);
+  pointer-events: none;
+}
